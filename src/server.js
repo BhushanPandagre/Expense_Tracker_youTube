@@ -5,7 +5,13 @@ const connectDB = require("./config/db");
 const PORT = process.env.PORT || 5000;
 
 connectDB()
-  .then(() => app.listen(PORT, () => console.log(`Server chal raha hai: http://localhost:${PORT}`)))
+  .then(() =>
+    app.listen(PORT, () =>
+      console.log(
+        `Server chal raha hai: http://localhost:${PORT}`,
+      ),
+    ),
+  )
   .catch((err) => {
     console.error("DB connect nahi hua:", err.message);
     process.exit(1);

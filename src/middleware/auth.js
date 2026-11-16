@@ -2,10 +2,14 @@ const jwt = require("jsonwebtoken");
 
 module.exports = function auth(req, res, next) {
   const header = req.headers.authorization || "";
-  const token = header.startsWith("Bearer ") ? header.slice(7) : null;
+  const token = header.startsWith("Bearer ")
+    ? header.slice(7)
+    : null;
 
   if (!token) {
-    return res.status(401).json({ message: "Token nahi mila, pehle login karo" });
+    return res
+      .status(401)
+      .json({ message: "Token nahi mila, pehle login karo" });
   }
 
   try {
@@ -13,6 +17,8 @@ module.exports = function auth(req, res, next) {
     req.userId = payload.id;
     next();
   } catch (err) {
-    return res.status(401).json({ message: "Token galat ya expire ho gaya" });
+    return res
+      .status(401)
+      .json({ message: "Token galat ya expire ho gaya" });
   }
 };

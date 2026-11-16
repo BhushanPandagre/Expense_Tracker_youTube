@@ -1,8 +1,14 @@
 const router = require("express").Router();
 const auth = require("../middleware/auth");
-const { create, list, update, remove } = require("../controllers/expense.controller");
+const {
+  create,
+  list,
+  update,
+  remove,
+} = require("../controllers/expense.controller");
 
-router.use(auth); // is file ke saare routes protected hain
+// is file ke saare routes protected hain
+router.use(auth);
 
 router.post("/", create);
 router.get("/", list);
